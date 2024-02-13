@@ -1,0 +1,22 @@
+{% extends "tasks/layout.html" %}
+{% block body %}
+        <div class="container">
+            <form action="{% url 'tasks:add' %}" method="post">
+                <!-- this csrf_token (cross-site request forgery) helps DJango 
+                    to validate the submit request
+                    to see if a request actually comes from the application itself
+                    or from another untrusted source
+                -->
+                {% csrf_token %}
+                <!-- 
+                    <input style="font-size: 70px;" type="text" name="task" placeholder="Enter Task name..."><br>
+                -->
+                {{ form }}
+                <input style="font-size: 50px;" type="submit" value="Add">
+            </form>
+
+            <div>
+                <a href="{% url 'tasks:index' %}">View Tasks</a>
+            </div>
+        </div>
+{% endblock %}
